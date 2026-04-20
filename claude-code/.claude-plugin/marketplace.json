@@ -1,0 +1,18 @@
+{
+  "name": "rune",
+  "owner": {
+    "name": "razzlero"
+  },
+  "metadata": {
+    "description": "Skills for convergent review and documentation-driven development",
+    "version": "0.2.26"
+  },
+  "plugins": [
+    {
+      "name": "rune",
+      "source": "./",
+      "description": "Skills for convergent review and documentation-driven development",
+      "version": "0.2.26"
+    }
+  ]
+}
