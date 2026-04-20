@@ -8,7 +8,7 @@ Rune is a personal project, shared openly for **inspiration and learning**. It r
 
 Some things to know before using it:
 
-- **Not accepting pull requests.** At its heart this is a repo built for me, shaped around my own taste and workflow — and I believe in being selective about what you add to your agent to keep it lean. That said, I'd love to learn from other people's forks, experiences, and opinions: issues and forks are very welcome; PRs will usually be closed.
+- **Personal project.** This repo is shaped around my own taste and workflow. Forks and feedback are welcome. But PRs are unlikely to be merged unless they happen to align with my own goals.
 - **Frequent breaking changes.** Skills get renamed, merged, split, or deleted whenever I find a better shape. There's no deprecation policy and no guarantee today's commands exist tomorrow.
 - **Best used as a base, not a dependency.** If any of this is useful to you, the recommended path is to **fork the repo** (or copy individual skills into your own setup) and bend it to your own workflow. Treat rune as a reference implementation, not a product.
 - **Install is local-only.** Each tool folder is meant to be installed from a local clone of this repo, not via a remote git URL. This keeps each tool's layout idiomatic without fighting any particular tool's packaging conventions. See each tool folder's README for the exact install step.
