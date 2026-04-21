@@ -20,8 +20,9 @@ Each tool lives in its own top-level folder, self-contained with its own manifes
 | Tool | Location |
 |------|----------|
 | Claude Code plugin | [`claude-code/`](claude-code/README.md) |
+| pi setup | [`pi/`](pi/README.md) |
 
-More tool folders will appear here as I port the workflows to other AI coding surfaces (pi, Codex, etc.).
+Tool folders are kept separate on purpose: each can start from the same workflows, then diverge to fit its host surface.
 
 ## Shared conventions
 
@@ -48,7 +49,8 @@ rune/                            — multi-tool monorepo
 │   ├── musings/
 │   ├── plans/
 │   └── retros/
-└── claude-code/                 — Claude Code plugin (see its README)
+├── claude-code/                 — Claude Code plugin (see its README)
+└── pi/                          — pi setup (see its README)
 ```
 
 ## References
