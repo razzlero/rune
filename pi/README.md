@@ -1,17 +1,17 @@
-# rune — pi skills
+# rune — pi package
 
 Rune workflows adapted for pi.
 
 ## Status
 
-This folder currently contains a baseline skill set under [`skills/`](skills/) and is intended to evolve into a pi-native version of rune's workflows.
+This directory is now a local pi package. Today it ships the baseline rune skill set under [`skills/`](skills/); later it can also grow pi-native extensions, prompts, and themes without changing the install shape.
 
 Shared conventions like writing output under `rune/<subdir>/` still apply unless a consuming repo overrides them in its own agent instructions.
 
 That means:
 
-- `pi/` is maintained as its own tool directory
-- skills here can evolve toward pi-specific prompts, structure, and packaging
+- `pi/` is maintained as its own pi package
+- skills here can evolve toward pi-specific prompts, extensions, and packaging
 - changes should be made intentionally in this folder rather than assuming any automatic sync from elsewhere
 
 ## Setup
@@ -34,15 +34,12 @@ tmux kill-server
 tmux
 ```
 
-### Install the skills
+### Install the package
 
-Use these as regular pi skills by adding this repo path to `~/.pi/agent/settings.json`:
+Install the package directly:
 
-```json
-{
-  "skills": ["D:/dev/rune/pi/skills"],
-  "enableSkillCommands": true
-}
+```bash
+pi install ./pi
 ```
 
 Then restart pi or run:
@@ -51,7 +48,7 @@ Then restart pi or run:
 /reload
 ```
 
-Invoke them as native pi skill commands:
+Invoke the current skills as native pi skill commands:
 
 ```text
 /skill:muse
@@ -68,6 +65,7 @@ Invoke them as native pi skill commands:
 
 | Path | Purpose |
 |------|---------|
+| [`package.json`](package.json) | pi package manifest |
 | [`skills/`](skills/) | Baseline copies of the current rune skills |
 
 ## Current skill set
@@ -85,4 +83,4 @@ Invoke them as native pi skill commands:
 
 ## Notes
 
-This directory does not yet add pi-specific packaging or integration metadata; it is currently the skill corpus plus this README.
+The package currently exports the skill set via the `pi` manifest in [`package.json`](package.json). Extensions, prompts, and themes can be added later under this same package.
