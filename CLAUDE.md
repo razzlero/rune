@@ -10,15 +10,6 @@ Skill `description` frontmatter shows up as autocomplete hits — keep it to a s
 
 When you encounter an external project, tool, or writeup (blog post, repo, paper) that lives in rune's problem space, add an entry to [`REFERENCES.md`](REFERENCES.md). It doesn't need to have changed a skill yet — adjacent prior art is worth keeping. One-line bullet per source: link + 1-2 sentences on what it offers. Place under the category that fits — **AI skills, plugins & tools**, **Writeups & posts**, or **Research & guides**. Don't record "what it influenced" — those bindings decay as skills change.
 
-## Bump the plugin version when skills change
-
-This is a personal-use plugin updated frequently — keep version bumping low-effort:
-
-- **Patch bump only by default** (e.g. 0.1.0 → 0.1.1) for any skill/primer/config change.
-- **Bump all three versions together** — `claude-code/.claude-plugin/plugin.json` (`version`) and `claude-code/.claude-plugin/marketplace.json` (both `metadata.version` and `plugins[0].version`) should stay in sync.
-- **Skip the bump if the version is already changed uncommitted** — one bump per commit is plenty; don't stack them.
-- **Leave minor bumps to the user.** Don't promote to a minor (e.g. 0.1.x → 0.2.0) unless explicitly asked.
-
 ## Per-repo state
 
 Plugin state lives under `<repo>/rune/plans/`, `rune/retros/`, `rune/musings/` — plugin-owned output dirs, committed, created lazily on first use by the relevant skill.

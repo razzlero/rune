@@ -7,7 +7,7 @@ description: Review code changes via a panel of parallel lens-based reviewers
 
 ## Overview
 
-Review code changes by launching a panel of 3 lens-based reviewer sessions in parallel — ideally separate pi instances in tmux panes/windows — then synthesizing their findings into a single report. Reviewers are the authorities on what they find — each one grounds its findings in code it actually read. The main session's role is orchestration: dedupe across reviewers, organize by severity, present.
+Review code changes by launching a panel of 3 lens-based reviewer subagents in parallel, then synthesizing their findings into a single report. Reviewers are the authorities on what they find — each one grounds its findings in code it actually read. The main session's role is orchestration: dedupe across reviewers, organize by severity, present.
 
 ## Input
 
@@ -39,7 +39,7 @@ digraph panel {
 
 ### Phase 1: Launch all reviewers (in parallel)
 
-3 reviewers per pass, **one per lens**, launched as separate fresh pi sessions — ideally one tmux pane/window per reviewer. The main session does not review or gather context during this phase — proceed to Phase 2 once reviewers return.
+3 reviewers per pass, **one per lens**, launched in parallel as fresh subagents. The main session does not review or gather context during this phase — proceed to Phase 2 once reviewers return.
 
 Three pre-defined multi-purpose lenses — General is itself a lens, so every pass runs a holistic reviewer alongside the focused ones:
 

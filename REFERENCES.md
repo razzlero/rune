@@ -20,6 +20,11 @@ A curated library of skill collections, tools, and writeups worth learning from 
 - [claude-task-master](https://github.com/eyaltoledano/claude-task-master) — PRD-to-task-graph workflow with explicit dependencies and parallelism.
 - [BMAD-METHOD](https://github.com/bmad-code-org/BMAD-METHOD) — Multi-artifact agile-agent workflow with role-separated PRD / architecture / stories authored by different agents.
 - [NotMyself plan optimizer](https://gist.github.com/NotMyself/09cc37ae457be1009aba4b9ae23249eb) — Three-level progressive-disclosure plan structure (Overview → Phase summaries → detailed steps).
+- [badlogic/pi-mono](https://github.com/badlogic/pi-mono/tree/main/packages/coding-agent) — Official pi coding agent. Minimal terminal harness; intentionally ships without subagents or plan mode, relying on extensions/skills/packages for those. [Extensions docs](https://github.com/badlogic/pi-mono/blob/main/packages/coding-agent/docs/extensions.md).
+- [pi-mono RPC / headless protocol](https://github.com/badlogic/pi-mono/blob/main/packages/coding-agent/docs/rpc.md) — JSONL-over-stdin/stdout protocol for controlling a pi process. Structured commands (`prompt`, `steer`, `get_state`, `get_messages`, `fork`, `clone`) and streamed events (`agent_start`, `agent_end`, `message_update`, `tool_execution_*`). The foundation for building subagent orchestration without tmux or screen-scraping — parent extension acts as the child process's controlling client.
+- [nicobailon/pi-subagents](https://github.com/nicobailon/pi-subagents) — Most popular pi subagent extension (~930★). Async delegation, chains (`.chain.md`), git-worktree-isolated parallelism, skill injection, forked contexts, MCP bridge.
+- [tintinweb/pi-subagents](https://github.com/tintinweb/pi-subagents) — Claude-Code-style subagents for pi (~186★). `Agent` / `get_subagent_result` / `steer_subagent` tools, live widget, mid-run steering, session resume, custom agent types under `.pi/agents/<name>.md`.
+- [mjakl/pi-subagent](https://github.com/mjakl/pi-subagent) — Minimalist pi subagent extension (~36★). Deliberately trimmed to `spawn` vs `fork` with depth/cycle guards; useful as a starting point for a custom build.
 
 ## Writeups & posts
 

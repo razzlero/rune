@@ -7,7 +7,7 @@ description: Refine a plan by stress-testing it from the no-context implementer'
 
 ## Overview
 
-A plan is only as good as the worker who'll execute it can follow. `/refine` launches no-context reviewer sessions — ideally separate pi instances in tmux panes/windows — as proxies for the implementer who'll inherit the plan, and surfaces what's unclear, ambiguous, or contradictory before the work starts.
+A plan is only as good as the worker who'll execute it can follow. `/refine` launches no-context reviewer subagents as proxies for the implementer who'll inherit the plan, and surfaces what's unclear, ambiguous, or contradictory before the work starts.
 
 Single pass, parallel reviewers, main session triages and folds clarifications back into the plan. No convergence loop — plan review is a comprehension audit, not a bug hunt; one well-structured pass with diverse lenses beats N rounds of polish.
 
@@ -19,7 +19,7 @@ A plan document path. If none is given, default to the most recently modified fi
 
 ### Phase 1: Launch reviewers in parallel
 
-3 reviewers per pass, **one per lens**, launched as separate fresh pi sessions — ideally one tmux pane/window per reviewer. Capping at 3 is an intentional cost/speed guardrail.
+3 reviewers per pass, **one per lens**, launched in parallel as fresh subagents. Capping at 3 is an intentional cost/speed guardrail.
 
 Three pre-defined multi-purpose lenses — General is itself a lens, so every pass runs a holistic reviewer alongside the focused ones:
 

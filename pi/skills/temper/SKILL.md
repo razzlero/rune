@@ -7,7 +7,7 @@ description: Iterative fix-and-review loop on code changes until all models agre
 
 ## Overview
 
-Launch 3 fresh reviewer sessions in parallel — ideally separate pi instances in tmux panes/windows — across General / Fit / Stress lenses to review code changes against a plan/spec, hunting for both **issues** (bugs, contradictions, missing cases) and **improvements** (existing helpers to reuse, simpler patterns already in the codebase, refactor candidates). Address every actionable finding — fix, apply, or clarify — then restart with a fresh round. Converges when a round produces no actionable findings. Any applied change needs a fresh review pass — improvements can introduce bugs too.
+Launch 3 fresh reviewer subagents in parallel across General / Fit / Stress lenses to review code changes against a plan/spec, hunting for both **issues** (bugs, contradictions, missing cases) and **improvements** (existing helpers to reuse, simpler patterns already in the codebase, refactor candidates). Address every actionable finding — fix, apply, or clarify — then restart with a fresh round. Converges when a round produces no actionable findings. Any applied change needs a fresh review pass — improvements can introduce bugs too.
 
 For plan review (refining a plan/spec doc before implementation), use `/refine` instead — it's a single-pass comprehension audit with a different shape.
 
@@ -17,7 +17,7 @@ Reviewers work from the plan/spec document and the changed code. The main sessio
 
 ## Core Loop
 
-3 reviewers per round, **one per lens**, launched in parallel as separate fresh pi sessions — ideally one tmux pane/window per reviewer. Cross-model and cross-family agreement is the strongest convergence signal. Capping at 3 per round is an intentional cost/speed guardrail.
+3 reviewers per round, **one per lens**, launched in parallel as fresh subagents. Cross-model and cross-family agreement is the strongest convergence signal. Capping at 3 per round is an intentional cost/speed guardrail.
 
 Three pre-defined multi-purpose lenses — General is itself a lens, so each round always runs a holistic reviewer alongside the focused ones:
 
@@ -29,9 +29,9 @@ Three pre-defined multi-purpose lenses — General is itself a lens, so each rou
 
 Use different models across the 3 slots when practical (e.g. haiku + sonnet + opus) for cross-model bias variation on top of lens diversity. Drop a focused lens entirely if clearly not applicable (e.g. Stress for a doc-only change) and use that slot for a second General reviewer instead.
 
-1. **Launch all reviewers in parallel** — one fresh pi session per reviewer, ideally in tmux, so results come back as independent passes.
+1. **Launch all reviewers in parallel** — one fresh subagent per reviewer, so results come back as independent passes.
 2. **Classify and act on every finding** — fix or clarify (see below). The main session judges which, using its context advantage. Severity: `critical` (bug, security, data loss), `important` (correctness, design), `suggestion` (improvement, simplification, style). Not majority vote — a finding raised by one reviewer is just as valid as one raised by all.
-3. **Restart automatically** — if any changes were made (fix, applied improvement, or doc clarification), immediately launch a fresh parallel round from step 1 with new reviewer sessions (no context from prior rounds). Applied changes need their own clean pass — improvements and simplifications can introduce bugs too. Do not ask the user whether to continue — the loop runs until convergence.
+3. **Restart automatically** — if any changes were made (fix, applied improvement, or doc clarification), immediately launch a fresh parallel round from step 1 with new reviewer subagents (no context from prior rounds). Applied changes need their own clean pass — improvements and simplifications can introduce bugs too. Do not ask the user whether to continue — the loop runs until convergence.
 4. **Done** — when a round produces no actionable findings, or only trivial feedback the main session judges not worth acting on. Convergence requires a clean pass that reviewed the *current* state of the code, not an earlier state. If the loop hasn't converged after 3 rounds, stop and report the remaining findings rather than looping indefinitely. Before declaring done, run the project's tests/builds/linters and read the output — don't assume fixes are correct from code inspection alone.
 
 ## How to Launch Reviewers
