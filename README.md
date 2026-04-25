@@ -26,6 +26,17 @@ Tool folders are kept separate on purpose: each can start from the same workflow
 
 ## Shared conventions
 
+### Typical workflow
+
+Rune's skills are designed to compose into a loose pipeline. Not every step is needed every time — skip the ones that don't fit the size or shape of the work.
+
+1. **`/muse`** — Brainstorm and think out loud. A rubber duck that talks back, can search for answers, and records the session as a musing doc. Skip if you already know what you want to do.
+2. **`/craft`** — Craft a plan from requirements or a prior musing. Captures the context an implementer needs to hit the ground running.
+3. **`/refine`** — Stress-test the plan by having subagents review it. Mostly worthwhile when the plan will be handed off to a separate agent. Skip for simple work or when implementing in the current session.
+4. **`/forge`** — Implement the plan with TDD discipline (red, green, refactor). Often worth running in a subagent or parallel session to keep the main session's context clean.
+5. **`/temper`** — Subagents review the forged changes against the plan; the main session decides whether to fix the code or sharpen the plan. Run this from the same session that crafted the plan, so it has the context to judge reviewer feedback.
+6. **`/retro`** — After the work lands, reflect with a Keep/Problem/Try retrospective and pick action items for next time.
+
 ### Output directories
 
 Skills across all tools write their output under `rune/<subdir>/` in the *consuming* repo (i.e. wherever you're running the agent, not this repo):
