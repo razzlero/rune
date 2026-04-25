@@ -34,7 +34,7 @@ Rune's skills are designed to compose into a loose pipeline. Not every step is n
 2. **`/craft`** — Craft a plan doc from requirements or a prior musing. Captures the context an implementer needs to hit the ground running.
 3. **`/refine`** — Stress-test the plan by having subagents review it. Mostly worthwhile when the plan will be handed off to a separate agent. Skip for simple work or when implementing in the current session.
 4. **`/forge`** — Implement the plan with TDD discipline (red, green, refactor). Often worth running in a subagent or parallel session to keep the main session's context clean.
-5. **`/temper`** — Subagents review the forged changes against the plan; the main session decides whether to fix the code or sharpen the plan. Run this from the same session that crafted the plan, so it has the context to judge reviewer feedback.
+5. **`/temper`** — Subagents review the forged changes against the plan; the main session decides whether to fix the code or clarify the plan. Run this from the same session that crafted the plan, so it has the context to judge reviewer feedback.
 6. **`/retro`** — After the work lands, reflect with a Keep/Problem/Try retrospective and pick action items for next time.
 
 ### Output directories
