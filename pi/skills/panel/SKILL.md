@@ -49,7 +49,7 @@ Three pre-defined multi-purpose lenses — General is itself a lens, so every pa
 | **Fit** | Reuse and convention — existing helpers, patterns, or modules the change should use instead of inventing; new code conflicting with conventions visible in adjacent files |
 | **Stress** | What breaks the change: edge cases (nil/empty/error paths, off-by-ones, happy-path skips), adversarial framing (shadow paths, ordering hazards), and scale / data-access (N+1 reads/writes, loops over DB or network calls, missing bulk/batch ops — mentally run at 10× and 1000× input) |
 
-Use different models across the 3 slots when practical (e.g. haiku + sonnet + opus) for cross-model bias variation on top of lens diversity. Drop a focused lens if clearly not applicable and use that slot for a second General reviewer.
+Use different models across the 3 slots when practical for cross-model bias variation on top of lens diversity. Drop a focused lens if clearly not applicable and use that slot for a second General reviewer.
 
 Each reviewer should start in a fresh session with no inherited chat context from the main session.
 

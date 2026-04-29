@@ -27,7 +27,7 @@ Three pre-defined multi-purpose lenses — General is itself a lens, so each rou
 | **Fit** | Reuse and convention — existing helpers, patterns, or modules the change should use instead of inventing; new code conflicting with conventions visible in adjacent files |
 | **Stress** | What breaks the change: edge cases (nil/empty/error paths, off-by-ones, happy-path skips), adversarial framing (shadow paths, ordering hazards), and scale / data-access (N+1 reads/writes, loops over DB or network calls, missing bulk/batch ops — mentally run at 10× and 1000× input) |
 
-Use different models across the 3 slots when practical (e.g. haiku + sonnet + opus) for cross-model bias variation on top of lens diversity. Drop a focused lens entirely if clearly not applicable (e.g. Stress for a doc-only change) and use that slot for a second General reviewer instead.
+Use different models across the 3 slots when practical for cross-model bias variation on top of lens diversity. Drop a focused lens entirely if clearly not applicable (e.g. Stress for a doc-only change) and use that slot for a second General reviewer instead.
 
 1. **Launch all reviewers in parallel** — one fresh subagent per reviewer, so results come back as independent passes.
 2. **Classify and act on every finding** — fix or clarify (see below). The main session judges which, using its context advantage. Severity: `critical` (bug, security, data loss), `important` (correctness, design), `suggestion` (improvement, simplification, style). Not majority vote — a finding raised by one reviewer is just as valid as one raised by all.

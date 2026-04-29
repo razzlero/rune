@@ -29,7 +29,7 @@ Three pre-defined multi-purpose lenses — General is itself a lens, so every pa
 | **Implementer** | The worker's perspective throughout the task: what's confusing at hour 1 (cold-open clarity), what surprises hit mid-implementation (predictability from the plan), and what behaviors, edge cases, or success criteria are left unspecified (test-author concerns) |
 | **Operations** | First on-call paged at 3am — failure modes, observability, rollback. What does the plan say (or fail to say) about what breaks and how to recover? |
 
-Use different models across the 3 slots when practical (e.g. haiku + sonnet + opus) for cross-model bias variation on top of lens diversity. Drop a focused lens entirely if clearly not applicable (e.g. Operations for a pure refactor) and use that slot for a second General reviewer instead.
+Use different models across the 3 slots when practical for cross-model bias variation on top of lens diversity. Drop a focused lens entirely if clearly not applicable (e.g. Operations for a pure refactor) and use that slot for a second General reviewer instead.
 
 Give each reviewer:
 
