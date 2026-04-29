@@ -31,7 +31,7 @@ The plan file is working memory, not a deliverable produced at the end. Conversa
 - **Prioritize external context that can't be re-derived** — ticket content, API responses, Slack discussions, error messages.
 - **Transcribe perishable visuals** — screenshots, diagrams, browser results — before moving on.
 - **Capture code structure, not a full re-walk** — key file paths, patterns, interfaces. Code can be re-read; re-exploring is expensive.
-- **Re-read the file before major decisions** — keeps goals and prior findings in the attention window.
+- **Supersede, don't stack** — when a question resolves or an assumption hardens, rewrite in place and delete the rough form.
 
 **Ask rather than fill gaps.** If an Overview bullet isn't grounded in user statements, referenced tickets, or the conversation, raise it as a question rather than writing it. Uncontested Overview bullets read like recorded intent but are invented by the agent. Prefer one focused question at a time; batch 2-3 only when independent and genuinely blocking.
 

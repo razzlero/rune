@@ -69,7 +69,7 @@ If a question reads as *"obvious to anyone with context"* — that **is** the ga
 
 **Answer from context first; surface as a last resort.** Silent invention — folding in a plausible-sounding answer the outer session actually doesn't know — is the main failure mode. When genuinely unsure whether you can answer from available sources, put the item on the unresolved list. A cheap user round-trip beats a confidently-wrong plan edit.
 
-**Density over page count.** Fold clarifications into existing structure. Do not append a Q&A section, do not add a "Clarifications" appendix. If the plan's Overview, Strategy, or Implementation Steps weren't clear enough, those are what gets edited.
+**Density over page count.** Fold clarifications into existing structure. Edit the section that wasn't clear; *replace* the rough phrasing rather than leaving both. After each edit, cut adjacent bullets the answer makes redundant.
 
 ### Phase 4: Surface unresolved items
 
