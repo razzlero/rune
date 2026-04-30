@@ -37,6 +37,8 @@ Invoke the current skills as native pi skill commands:
 /skill:retro
 /skill:panel
 /skill:distill
+/skill:ask-claude
+/skill:ask-codex
 ```
 
 ## Contents
@@ -58,4 +60,6 @@ Invoke the current skills as native pi skill commands:
 | [retro](skills/retro/SKILL.md) | Reflect on completed work and maintain durable lessons |
 | [panel](skills/panel/SKILL.md) | Review code changes with parallel model reviewers and adversarial validation |
 | [distill](skills/distill/SKILL.md) | Compact a doc to preserve meaning while cutting tokens and redundant instructions |
+| [ask-claude](skills/ask-claude/SKILL.md) | Delegate a question or task to Claude Code in headless mode |
+| [ask-codex](skills/ask-codex/SKILL.md) | Delegate a question or task to Codex CLI in headless mode |
 
