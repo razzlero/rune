@@ -12,7 +12,7 @@ When you encounter an external project, tool, or writeup (blog post, repo, paper
 
 ## Per-repo state
 
-Plugin state lives under `<repo>/rune/plans/`, `rune/retros/`, `rune/musings/` — plugin-owned output dirs, committed, created lazily on first use by the relevant skill.
+Plugin state lives under `<repo>/rune/plans/`, `rune/lore/`, `rune/musings/` — plugin-owned output dirs, committed, created lazily on first use by the relevant skill.
 
 Skills hard-default to `rune/<subdir>/` — no config file. If a consuming repo needs a different directory (e.g. a pre-existing `docs/plans/`), the repo's own CLAUDE.md instructs the skill in-context; the plugin itself doesn't know about overrides.
 

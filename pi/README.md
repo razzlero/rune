@@ -34,7 +34,7 @@ Invoke the current skills as native pi skill commands:
 /skill:refine
 /skill:forge
 /skill:temper
-/skill:retro
+/skill:reflect
 /skill:panel
 /skill:distill
 /skill:ask-claude
@@ -57,7 +57,7 @@ Invoke the current skills as native pi skill commands:
 | [refine](skills/refine/SKILL.md) | Refine a plan by stress-testing it from the no-context implementer's perspective |
 | [forge](skills/forge/SKILL.md) | Execute a plan with TDD discipline — red, green, refactor |
 | [temper](skills/temper/SKILL.md) | Iterative fix-and-review loop on code changes until all models agree it's clean |
-| [retro](skills/retro/SKILL.md) | Reflect on completed work and maintain durable lessons |
+| [reflect](skills/reflect/SKILL.md) | Capture non-obvious project knowledge into `rune/lore/` for other skills to consult on future work |
 | [panel](skills/panel/SKILL.md) | Review code changes with parallel model reviewers and adversarial validation |
 | [distill](skills/distill/SKILL.md) | Compact a doc to preserve meaning while cutting tokens and redundant instructions |
 | [ask-claude](skills/ask-claude/SKILL.md) | Delegate a question or task to Claude Code in headless mode |

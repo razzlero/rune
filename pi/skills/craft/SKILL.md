@@ -72,7 +72,6 @@ Read [reference/plan-template.md](reference/plan-template.md) before writing the
 
 **Don't include as steps:**
 
-- **`/retro`** — retros are for capturing problems-and-fixes after the fact (manual, user-driven). Not an implementation deliverable.
 - **Git commits** — committing is the user's manual concern, outside AI flows. Don't add a "commit the changes" step unless the user explicitly asks.
 - **"Write tests" as a trailing step** — tests belong with the feature step that introduces the behavior, not appended after. A final "review test coverage" step that confirms what was built has appropriate coverage is fine; a catch-up "now write the tests" step is not — it reads as permission to defer testing.
 

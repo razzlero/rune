@@ -35,7 +35,7 @@ Rune's skills are designed to compose into a loose pipeline. Not every step is n
 3. **`/refine`** — Stress-test the plan by having subagents review it. Mostly worthwhile when the plan will be handed off to a separate agent. Skip for simple work or when implementing in the current session.
 4. **`/forge`** — Implement the plan with TDD discipline (red, green, refactor). Often worth running in a subagent or parallel session to keep the main session's context clean.
 5. **`/temper`** — Subagents review the forged changes against the plan; the main session decides whether to fix the code or clarify the plan. Run this from the same session that crafted the plan, so it has the context to judge reviewer feedback.
-6. **`/retro`** — After the work lands, reflect with a Keep/Problem/Try retrospective and pick action items for next time.
+6. **`/reflect`** — After meaningful work, capture non-obvious project knowledge into `rune/lore/` so other skills can consult it. Opportunistic, not required — invoke only when the work surfaced something worth recording.
 
 ### Output directories
 
@@ -45,21 +45,21 @@ Skills across all tools write their output under `rune/<subdir>/` in the *consum
 |-----|-------|----------|
 | `rune/plans/` | `/craft` | One plan per change |
 | `rune/musings/` | `/muse` | Pre-planning scratchpad, rubber-duck, thought capture |
-| `rune/retros/` | `/retro` | Reflections on completed work (Keep/Problem/Try) + `LESSONS.md` index |
+| `rune/lore/` | `/reflect` | AI-maintained project context — architecture rationale, conventions, "where does X live" — consulted by other skills when their work touches a covered topic |
 
 Each dir is created on demand by its owning skill. A repo that already has a different layout (e.g. a pre-existing `docs/plans/`) can instruct the relevant skill in its own `CLAUDE.md` — "when `/craft` runs here, write plans to `docs/plans/` instead." Tools don't read a config file for this; the CLAUDE.md equivalent is already in context, so the LLM honors the override from there.
 
-The `rune/` directory at the root of *this* repo is just the same convention applied to the plugin's own work — retros, lessons, and plans about rune itself.
+The `rune/` directory at the root of *this* repo is just the same convention applied to the plugin's own work — plans, musings, and lore about rune itself.
 
 ## Structure
 
 ```
 rune/                            — multi-tool monorepo
 ├── REFERENCES.md                — related skill collections and writeups worth learning from
-├── rune/                        — this repo's own retros / plans / lessons (same convention skills use in consuming repos)
+├── rune/                        — this repo's own lore / plans / musings (same convention skills use in consuming repos)
+│   ├── lore/
 │   ├── musings/
-│   ├── plans/
-│   └── retros/
+│   └── plans/
 ├── claude-code/                 — Claude Code plugin (see its README)
 └── pi/                          — pi setup (see its README)
 ```

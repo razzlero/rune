@@ -28,9 +28,9 @@ Skill names are verbs — actions you tell the AI to do, like "craft a plan" or 
 | [refine](skills/refine/SKILL.md) | Refine a plan by stress-testing it from the no-context implementer's perspective — single-pass comprehension audit with diverse reviewer lenses |
 | [forge](skills/forge/SKILL.md) | Execute a plan with TDD discipline — red, green, refactor |
 | [temper](skills/temper/SKILL.md) | Iterative fix-and-review loop on code changes until all models agree it's clean |
-| [retro](skills/retro/SKILL.md) | Reflect on completed work — Keep/Problem/Try notes drafted by the agent, then user adds points, then converge on action items. Maintains `LESSONS.md` for quick access to durable takeaways. |
+| [reflect](skills/reflect/SKILL.md) | Capture non-obvious project knowledge into `rune/lore/` — architecture rationale, conventions, "where does X live" maps. Other skills consult lore when their work touches a relevant topic. Opportunistic, not required. |
 
-Typical flow: `muse` → `craft` → `refine` → `forge` → `temper` → `retro`. Each step is a separate slash command so the user picks what the work needs — skip, repeat, or reorder as appropriate (e.g. straight to `/forge` for trivial work, or several `/temper` rounds on a gnarly diff).
+Typical flow: `muse` → `craft` → `refine` → `forge` → `temper` → `reflect`. Each step is a separate slash command so the user picks what the work needs — skip, repeat, or reorder as appropriate (e.g. straight to `/forge` for trivial work, or several `/temper` rounds on a gnarly diff).
 
 ### Utilities
 
@@ -39,7 +39,7 @@ Typical flow: `muse` → `craft` → `refine` → `forge` → `temper` → `retr
 | [panel](skills/panel/SKILL.md) | Review code changes with parallel model reviewers and adversarial validation. Best for reviewing others' code. *(Needs improvement — I'll keep iterating on it.)* |
 | [distill](skills/distill/SKILL.md) | Compact a doc to preserve meaning while cutting tokens and redundant instructions |
 
-Plugin-namespaced invocation (`rune:retro`, `rune:craft`, etc.) is available when a bare name collides with something else.
+Plugin-namespaced invocation (`rune:reflect`, `rune:craft`, etc.) is available when a bare name collides with something else.
 
 ## Output directories
 
