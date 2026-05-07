@@ -25,12 +25,10 @@ Invoke the current skills as native pi skill commands:
 /skill:reflect
 /skill:panel
 /skill:distill
-/skill:ask-claude
-/skill:ask-codex
-/skill:ask-pi
+/skill:sub
 ```
 
-Skills that fan out to "fresh subagents" (`panel`, `temper`, `refine`) launch parallel `pi -p` subprocesses via `ask-pi` — no extension needed. Skill prose is tool-name-agnostic, so the same skills work in the [claude-code](../claude-code) package via `Task` and in any future Codex package via `codex exec`.
+Skills that fan out to "fresh subagents" (`panel`, `temper`, `refine`) can use `/skill:sub` for headless delegation — no extension needed. Skill prose is tool-name-agnostic, so the same skills work in the [claude-code](../claude-code) package via `Task` and in any future Codex package via `codex exec`.
 
 ## Contents
 
@@ -52,7 +50,5 @@ Skills that fan out to "fresh subagents" (`panel`, `temper`, `refine`) launch pa
 | [reflect](skills/reflect/SKILL.md) | Capture non-obvious project knowledge into `rune/lore/` for other skills to consult on future work |
 | [panel](skills/panel/SKILL.md) | Review code changes with parallel model reviewers and adversarial validation |
 | [distill](skills/distill/SKILL.md) | Compact a doc to preserve meaning while cutting tokens and redundant instructions |
-| [ask-claude](skills/ask-claude/SKILL.md) | Delegate a question or task to Claude Code in headless mode |
-| [ask-codex](skills/ask-codex/SKILL.md) | Delegate a question or task to Codex CLI in headless mode |
-| [ask-pi](skills/ask-pi/SKILL.md) | Delegate a question or task to pi in headless mode |
+| [sub](skills/sub/SKILL.md) | Delegate a question or task to a fresh pi, Claude, or Codex subagent |
 

@@ -38,8 +38,7 @@ Typical flow: `muse` → `craft` → `refine` → `forge` → `temper` → `refl
 |-------|-------------|
 | [panel](skills/panel/SKILL.md) | Review code changes with parallel model reviewers and adversarial validation. Best for reviewing others' code. *(Needs improvement — I'll keep iterating on it.)* |
 | [distill](skills/distill/SKILL.md) | Compact a doc to preserve meaning while cutting tokens and redundant instructions |
-| [ask-pi](skills/ask-pi/SKILL.md) | Delegate a question or task to pi in headless mode — second opinion from a different model/toolset |
-| [ask-codex](skills/ask-codex/SKILL.md) | Delegate a question or task to Codex CLI in headless mode — second opinion from a different model/toolset |
+| [sub](skills/sub/SKILL.md) | Delegate a question or task to a fresh pi or Codex subagent — second opinion from a different model/toolset |
 
 Plugin-namespaced invocation (`rune:reflect`, `rune:craft`, etc.) is available when a bare name collides with something else.
 
