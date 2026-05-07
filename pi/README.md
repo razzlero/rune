@@ -38,7 +38,7 @@ Skills that fan out to "fresh subagents" (`panel`, `temper`, `refine`) launch pa
 |------|---------|
 | [`package.json`](package.json) | pi package manifest |
 | [`skills/`](skills/) | Baseline copies of the current rune skills |
-| [`extensions/`](extensions/) | Pi extensions, one subfolder per extension. Currently just [`subagent-guidance`](extensions/subagent-guidance/) — appends [`guidance.md`](extensions/subagent-guidance/guidance.md) to the system prompt on every turn |
+| [`extensions/`](extensions/) | Pi extensions, one subfolder per extension. Currently just [`guidance`](extensions/guidance/) — appends [`guidance.md`](extensions/guidance/guidance.md) to the system prompt on every turn (subagent delegation rules today; other house rules in future) |
 
 ## Current skill set
 
