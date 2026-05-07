@@ -4,18 +4,6 @@ Rune workflows for [pi](https://pi.dev/).
 
 ## Setup
 
-### Prerequisite: a subagent extension
-
-Several rune skills are instructed to run subagents, so make sure to install a subagent extension. For example:
-
-```bash
-pi install npm:@tintinweb/pi-subagents
-```
-
-See [`@tintinweb/pi-subagents`](https://github.com/tintinweb/pi-subagents). Skill prose is tool-name-agnostic, so other subagent extensions work too — swap later without touching skill prose.
-
-### Install the package
-
 ```bash
 pi install ./pi
 ```
@@ -39,7 +27,10 @@ Invoke the current skills as native pi skill commands:
 /skill:distill
 /skill:ask-claude
 /skill:ask-codex
+/skill:ask-pi
 ```
+
+Skills that fan out to "fresh subagents" (`panel`, `temper`, `refine`) launch parallel `pi -p` subprocesses via `ask-pi` — no extension needed. Skill prose is tool-name-agnostic, so the same skills work in the [claude-code](../claude-code) package via `Task` and in any future Codex package via `codex exec`.
 
 ## Contents
 
@@ -47,6 +38,7 @@ Invoke the current skills as native pi skill commands:
 |------|---------|
 | [`package.json`](package.json) | pi package manifest |
 | [`skills/`](skills/) | Baseline copies of the current rune skills |
+| [`extensions/`](extensions/) | Pi extensions, one subfolder per extension. Currently just [`subagent-guidance`](extensions/subagent-guidance/) — appends [`guidance.md`](extensions/subagent-guidance/guidance.md) to the system prompt on every turn |
 
 ## Current skill set
 
@@ -62,4 +54,5 @@ Invoke the current skills as native pi skill commands:
 | [distill](skills/distill/SKILL.md) | Compact a doc to preserve meaning while cutting tokens and redundant instructions |
 | [ask-claude](skills/ask-claude/SKILL.md) | Delegate a question or task to Claude Code in headless mode |
 | [ask-codex](skills/ask-codex/SKILL.md) | Delegate a question or task to Codex CLI in headless mode |
+| [ask-pi](skills/ask-pi/SKILL.md) | Delegate a question or task to pi in headless mode |
 

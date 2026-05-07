@@ -28,5 +28,4 @@ echo "<prompt>" | claude -p --output-format json
 
 ## Notes
 
-- Latency: seconds to tens of seconds. Not for tight loops.
 - Output: when `--output-format json`, parse `result` for the final text.

@@ -36,5 +36,4 @@ echo "<prompt>" | codex exec -
 
 ## Notes
 
-- Latency: seconds to tens of seconds. Not for tight loops.
 - Default sandbox is `workspace-write` — pass `-s read-only` for pure read/search tasks.
