@@ -35,4 +35,7 @@ Audit checklist against the Overview. GitHub-style checkboxes so each criterion 
 - [ ] Criterion 1
 - [ ] Criterion 2
 - [ ] ...
+
+## Next Steps
+Optional. Include only when this plan is one slice of larger work — list follow-up slices that are out of scope here but expected to come next. One line each. Omit the section entirely if the plan is self-contained.
 ```
