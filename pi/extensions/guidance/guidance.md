@@ -1,15 +1,9 @@
 ## Subagent delegation
 
-The skill `sub` spawns a fresh agent in headless mode and returns its final answer. Treat it as your subagent mechanism — when instructed to launch subagents use this skill. Default to the `pi` provider unless specifically asked to use `claude` or `codex`.
+Use the `sub` skill to launch subagents. Default to `pi` unless asked for `claude` or `codex`.
 
-### Web search
+Use subagents when they have capabilities this agent lacks or when explicitly asked for them.
 
-The claude and codex subagents have the ability to perform web searches. When asked to perform a web search delegate the task to either claude or codex. Use codex for web search by default.
-
-### Web fetch
-
-Claude and codex subagents can fetch a specific URL and intelligently extract its content (including JS-rendered pages). When asked to read a webpage or pull content from a URL beyond what `curl` can give you, delegate to claude or codex. Use codex by default.
-
-### PDF reading
-
-Your `read` tool can't open PDFs. When asked to read a PDF, delegate to a claude subagent — its read tool handles PDFs natively.
+- Web search: delegate to `claude` or `codex`; use `codex` by default.
+- Web fetch: for webpage fetching or extraction beyond `curl`, delegate to `claude` or `codex`; use `codex` by default.
+- PDF reading: `read` can't open PDFs; delegate to `claude` or `codex`; use `codex` by default.
