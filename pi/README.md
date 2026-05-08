@@ -4,6 +4,8 @@ Rune workflows for [pi](https://pi.dev/).
 
 ## Setup
 
+Install the package into pi:
+
 ```bash
 pi install ./pi
 ```
@@ -30,13 +32,35 @@ Invoke the current skills as native pi skill commands:
 
 Skills that fan out to "fresh subagents" (`panel`, `temper`, `refine`) can use `/skill:sub` for headless delegation — no extension needed. Skill prose is tool-name-agnostic, so the same skills work in the [claude-code](../claude-code) package via `Task` and in any future Codex package via `codex exec`.
 
+## Development
+
+This package keeps its own dev tooling locally:
+
+```bash
+cd pi
+npm install
+npm run check
+```
+
+Or from the repo root:
+
+```bash
+npm --prefix pi install
+npm --prefix pi run check
+```
+
+Current setup:
+- Biome for formatting/linting
+- TypeScript for typechecking `**/*.ts`
+- no build step; pi loads extensions directly
+
 ## Contents
 
 | Path | Purpose |
 |------|---------|
 | [`package.json`](package.json) | pi package manifest |
 | [`skills/`](skills/) | Baseline copies of the current rune skills |
-| [`extensions/`](extensions/) | Pi extensions, one subfolder per extension. Currently just [`guidance`](extensions/guidance/) — appends [`guidance.md`](extensions/guidance/guidance.md) to the system prompt on every turn (subagent delegation rules today; other house rules in future) |
+| [`extensions/`](extensions/) | Pi extensions, one subfolder per extension. [`guidance`](extensions/guidance/) appends [`guidance.md`](extensions/guidance/guidance.md) to the system prompt on every turn. |
 
 ## Current skill set
 
