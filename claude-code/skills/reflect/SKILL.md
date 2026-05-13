@@ -13,29 +13,11 @@ Lore reflects the project's **current state**. The job is curation, not transcri
 
 Lore lives at `rune/lore/`. On invocation, create the folder and starter files if they don't exist.
 
-Create `rune/lore/INDEX.md`:
+Update `rune/CLAUDE.md` in place so it remains a concise guide to `rune/` with a compact lore topic index and, when justified, a small amount of must-know context.
 
-```markdown
-# Lore index
+If `rune/CLAUDE.md` does not exist yet, create it using [reference/rune-claude-template.md](reference/rune-claude-template.md) as the starter shape.
 
-AI-maintained context for this project. Each entry below is a topic doc covering non-obvious knowledge that future sessions need but can't easily re-derive from a code skim. Maintained by `/reflect`.
-
-## Topics
-
-<!-- one line per topic doc:
-- [<topic>](<filename>.md) — <one-line description>
--->
-```
-
-Create `rune/CLAUDE.md` if missing:
-
-```markdown
-# rune-managed context
-
-This directory contains AI-maintained project context under `lore/`. When working on a topic that may have non-obvious context (architecture, conventions, gotchas), check [`lore/INDEX.md`](lore/INDEX.md) for a relevant doc.
-```
-
-If `rune/CLAUDE.md` already exists, **append** the lore pointer rather than overwriting — the file may carry other rune-related instructions.
+Adapt the result to the repo's actual conventions before writing. If the repo keeps plans outside `rune/`, point to the real plan location.
 
 ## When to invoke
 
@@ -45,13 +27,14 @@ Opportunistic. Invoke after meaningful work that surfaced non-obvious knowledge,
 
 ## Drafting loop
 
-1. **Read existing lore.** Open `rune/lore/INDEX.md` and any topic docs that look relevant. Treat them as the prior state to extend or correct.
+1. **Read existing rune guidance and lore.** Open `rune/CLAUDE.md` and any `rune/lore/` topic docs that look relevant. Treat them as the prior state to extend or correct.
 2. **Identify candidates** from recent session context and any args. Apply the scope rules below — the candidate list is usually longer than the actual update.
 3. **Decide for each**: update existing doc, create new, or skip. *Skip is the most common answer.*
 4. **When updating**: edit in place. Tighten, replace, delete outdated content. Don't append changelogs or dated sections.
-5. **When creating**: kebab-case filename describing the topic (`auth-flow.md`, `error-handling.md`). Add a one-line entry to INDEX.md.
-6. **Tidy INDEX.md** if entries have grown stale, unclear, or out of order.
-7. **Stop when there's nothing left to capture or tidy.** A no-change run is a valid outcome.
+5. **When creating**: use a kebab-case filename describing the topic (`auth-flow.md`, `error-handling.md`). Update `rune/CLAUDE.md` so its lore section lists the topic doc with a one-line description, giving future agents a no-search map to relevant context.
+6. **Keep must-know context exceptional.** `rune/CLAUDE.md` may include a few broadly relevant points agents should almost always know up front, but only when burying them in lore would make future sessions miss them. Prefer links to lore for everything else.
+7. **Tidy `rune/CLAUDE.md`** if its directory guide, must-know context, or lore topic index has grown stale, unclear, too detailed, or inconsistent with repo-specific paths.
+8. **Stop when there's nothing left to capture or tidy.** A no-change run is a valid outcome.
 
 ## What to capture
 

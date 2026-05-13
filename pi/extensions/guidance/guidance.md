@@ -1,3 +1,7 @@
+## Rune-managed context
+
+If `rune/CLAUDE.md` exists it contains context relevant to the `rune` plugin skills. You should read it when planning or musing.
+
 ## Subagent delegation
 
 Use the `sub` skill to launch subagents. Default to `pi` unless asked for `claude` or `codex`.
