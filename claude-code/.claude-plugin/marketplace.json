@@ -5,14 +5,14 @@
   },
   "metadata": {
     "description": "Skills for convergent review and documentation-driven development",
-    "version": "0.2.31"
+    "version": "0.2.32"
   },
   "plugins": [
     {
       "name": "rune",
       "source": "./",
       "description": "Skills for convergent review and documentation-driven development",
-      "version": "0.2.31"
+      "version": "0.2.32"
     }
   ]
 }
