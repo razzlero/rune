@@ -1,18 +1,17 @@
 ---
 name: sub
-description: Delegate a question or task to a fresh pi, Claude, or Codex subagent
+description: Delegate a question or task to a fresh pi or Codex subagent
 ---
 
 # sub
 
 Launch a fresh headless subagent and return its final answer.
 
-Use `pi` by default. Switch providers when the user asks for one explicitly or the task benefits from a different tool/model family.
+Use `pi` by default. Switch to `codex` when the user asks for it explicitly or the task benefits from its tool/model family.
 
 ## Provider choice
 
 - `pi` — default; best general-purpose fresh-context subagent in this package
-- `claude` — use when the user specifically wants Claude Code
 - `codex` — use when the user specifically wants Codex CLI
 
 ## Process
@@ -20,7 +19,6 @@ Use `pi` by default. Switch providers when the user asks for one explicitly or t
 1. Identify the provider (`pi` if unspecified).
 2. Read the matching reference file:
    - [reference/pi.md](reference/pi.md)
-   - [reference/claude.md](reference/claude.md)
    - [reference/codex.md](reference/codex.md)
 3. Run the provider in headless mode.
 4. Return only the provider's final answer unless the user asked for orchestration details.

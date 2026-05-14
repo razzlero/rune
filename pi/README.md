@@ -74,5 +74,5 @@ Current setup:
 | [reflect](skills/reflect/SKILL.md) | Capture non-obvious project knowledge into `rune/lore/` for other skills to consult on future work |
 | [panel](skills/panel/SKILL.md) | Review code changes with parallel model reviewers and adversarial validation |
 | [distill](skills/distill/SKILL.md) | Compact a doc to preserve meaning while cutting tokens and redundant instructions |
-| [sub](skills/sub/SKILL.md) | Delegate a question or task to a fresh pi, Claude, or Codex subagent |
+| [sub](skills/sub/SKILL.md) | Delegate a question or task to a fresh pi or Codex subagent |
 
