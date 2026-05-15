@@ -14,6 +14,8 @@ This directory contains AI-maintained project context for future agent sessions.
 ## Lore topics
 
 <!-- Replace this placeholder block with the real lore topics that exist in the repo. Keep one line per doc. -->
+<!-- Make each line a retrieval hint, not just a title: say what it covers and when to open it. -->
 <!-- Example shape: -->
 <!-- - [Architecture](lore/architecture.md) — System shape, major boundaries, and the canonical pattern for common changes -->
-<!-- - [Testing conventions](lore/testing-conventions.md) — Test layers, preferred helpers, and project-specific testing gotchas -->
+<!-- - [Testing conventions](lore/testing-conventions.md) — Test layers, preferred helpers, and where to look before adding or rewriting tests -->
+<!-- - [Billing terms](lore/billing-terms.md) — Domain glossary for invoices, subscriptions, credits, and adjacent business vocabulary -->
