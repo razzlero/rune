@@ -9,6 +9,7 @@ A curated library of skill collections, tools, and writeups worth learning from 
 - [planning-with-files](https://github.com/OthmanAdi/planning-with-files) — Persistent markdown-based planning using the filesystem as working memory; splits `task_plan.md` / `findings.md` / `progress.md`.
 - [napkin](https://github.com/blader/napkin) — Scratchpad skill built around curated, prioritized findings rather than chronological logs.
 - [caveman](https://github.com/juliusbrussee/caveman) — Token compression via drop-hedging, drop-filler, drop-restatement rules.
+- [claude-diary](https://github.com/rlancemartin/claude-diary) — Long-term memory plugin for Claude Code: session diary capture, reflection across entries, and automatic `CLAUDE.md` updates from repeated patterns.
 - [agent-council](https://github.com/yogirk/agent-council) — Convenes a panel of CLI-based AI agents (Claude Code, Codex, Gemini CLI) for structured multi-stage deliberation.
 - [llm_council_skill](https://github.com/shuntacurosu/llm_council_skill) — Multi-LLM council with peer review and chairman synthesis.
 - [cc-skills](https://github.com/rube-de/cc-skills) — Curated skill collection including an AI council code-review plugin and project-management tooling.

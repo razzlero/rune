@@ -5,102 +5,139 @@ description: Compact a doc to preserve meaning while cutting tokens and redundan
 
 # Distill
 
-Compact prose and instructions. Keep meaning; cut tokens; collapse overlapping directives into fewer, stronger rules.
+Compact AI-read working docs so a future session keeps the same useful state with fewer tokens. Rewrite as **state transfer**, not summary: preserve what the next agent needs to continue without the original conversation.
 
-Use on AI-read or skim-read docs: plans, skill files, injected context. Not for READMEs, tutorials, or user-facing docs where tone matters. Not for code.
+Use on working docs where token pressure matters. Not for code, tutorials, marketing copy, or docs where voice matters more than compression.
 
-## Input
+## Core model
 
-- **Target** — file path or inline text
+Use the same bias good context compaction uses:
 
-## Core heuristic
+- **Keep durable state; drop the path taken to reach it.** Preserve decisions, constraints, current status, open questions, and next actions. Drop dead conversational scaffolding.
+- **Cut the predictable; keep the surprising.** If the reader could infer it from nearby text, cut it. Keep facts, exceptions, rationale that changes edge-case handling, and non-obvious relationships.
+- **Front-load high-value state.** Important context is easiest to miss when buried in the middle. Move critical constraints, decisions, and next steps toward the top of the doc or section.
+- **Prefer one strong rule over repeated reminders.** Redundant instructions waste tokens and weaken priority.
+- **Optimize for retrieval, not only compression.** A shorter doc that hides the key fact is worse. Use concrete headings and trigger terms so a future agent can find the right section fast.
 
-**Cut the predictable, keep the surprising.** If a word, phrase, or whole rule is predictable from surrounding context, it's a safe cut. If it carries information the reader couldn't infer — a fact, a constraint, a reason, an edge case — keep it. Every rule below specializes this.
+## Preserve first
 
-## Instruction economy
+Before cutting, identify the information a future session would regret losing:
 
-The biggest lever, and the one most often missed. Apply before prose polish; otherwise the real bloat survives and only filler words get trimmed.
+- current objective or document purpose
+- decisions made and why they still hold
+- invariants, constraints, and truth-condition qualifiers (`only`, `never`, `unless`, `except`)
+- open questions, risks, and unresolved tradeoffs
+- next actions or handoff guidance
+- exact strings needed for retrieval or execution: code, identifiers, paths, URLs, commands, error text
+- retrieval-critical text: skill `description`, trigger examples, opening lines that determine whether the doc gets opened at all
 
-- **Collapse echoed directives.** Same rule stated in multiple places weakens it rather than reinforcing it — restatement invites contradiction and muddies priority. Keep the strongest wording; delete the echoes. "Do X" + "Remember to X" + "Don't forget: X" → one line.
-- **Cut examples subsumed by their principle.** If a general rule is stated and the examples just instantiate it without adding counterintuitive detail, drop the examples. Keep examples only when they pin down an edge case the principle doesn't spell out.
-- **Don't explain what the reader already knows.** Drop definitions of common concepts (what a PDF is, what a migration is, what "idempotent" means). Challenge each explanatory clause: does the reader actually need this spelled out?
-- **One term per concept.** Synonym drift ("API endpoint / URL / route / path" for the same thing) confuses. Pick one; replace the rest.
-- **Options need a default.** Instead of "use X or Y or Z", write "use X (fallback: Y for case Z)". No undifferentiated option-lists in instructions.
-- **Directive voice, not descriptive.** Skill files instruct an agent. Keep "You need a clean baseline to distinguish X from Y"; don't passivize to "a clean baseline is needed".
-- **Restructure rather than compress, when possible.** Sometimes the right move is not "rewrite terser" but "move the detail to a linked file and leave a pointer". If a section can move to references without loss, prefer that over in-place compression.
+## What to cut hard
 
-## Prose economy
+- throat-clearing, filler, and obvious connective prose
+- repeated restatements of the same rule
+- examples that add no edge case beyond the rule they illustrate
+- long option lists without a default
+- explanations of common concepts the reader already knows
+- historical play-by-play when the resulting state is already captured
+- failed approaches that do not explain a current constraint, warning, or decision
 
-- Drop empty hedges: "basically", "really", "just", "simply", "actually", "essentially".
-- Keep calibrated hedges ("probably", "generally", "usually", "often") when they scope a claim; drop when redundant. "This generally works" → keep "generally" (scopes the claim). "You should generally follow X" → drop the throat-clear, keep the directive.
-- Drop restatement: "in other words", "that is to say", "what this means is" — and the repeat that follows.
-- Drop throat-clearing: "note that", "keep in mind that", "it's worth mentioning that".
-- Drop connective fluff that signals no real logical turn: "however", "furthermore", "additionally", "moreover". Keep when they mark a genuine contrast or addition.
-- Canonical substitutions: "in order to" → "to", "utilize" → "use", "the reason is because" → "because", "make sure to" → drop (keep the verb), "it is important to" → drop (keep the verb), "a large number of" → "many".
+## Compaction moves
 
-## Merge and restructure
+### 1. Rewrite transcript into state
 
-- Merge adjacent bullets making the same point. Fold three-sentence paragraphs into one when wording permits. Reorder so related points sit together and cross-references drop out.
-- Two sections genuinely duplicate content? Merge under one heading — but preserve navigational structure (see below).
-- When multiple examples illustrate the same pattern, keep the simplest canonical one; drop the rest.
-- Preserve *navigational* structure — top-level headings a reader relies on to find things. Minor structure (bullet vs prose, section order within a group, how sub-points nest) is fair game.
+Turn:
+- what was discussed
+- what was tried in sequence
+- who said what
 
-## Preserve even when it looks like filler
+Into:
+- current status
+- settled decisions
+- active constraints
+- remaining questions
+- next steps
 
-Main failure mode: cutting phrases that look like filler but carry meaning. Before deleting, confirm meaning survives:
+If the reader only needs the result, cut the narrative.
 
-- **Truth-condition qualifiers** — "always", "only", "never", "except when X", "unless Y". Cutting silently flips what's true vs false. Highest-stakes category.
-- **Negatives** — "don't", "not", "no", "never". Easy to drop under rewriting and invert meaning. Double-check any rewrite that removes a negation.
-- **Defining or narrowing parentheticals** — parentheticals that scope or define the word before them. "If the test itself is wrong (not testing what you intended), fix it" — without the parenthetical, "wrong" could mean failing when it should pass. Filler parentheticals ("(by the way, ...)") are still fair game.
-- **Scope anchors** — short phrases anchoring *what* a claim applies to: "in this file", "for this step", "within the current module". Dropping widens the claim.
-- **Reasons attached to rules** — a rule's "why" governs how the reader applies it at edges. "Keep tests hermetic (so parallel runs don't flake)" — cutting the parenthetical keeps the imperative but loses the criterion for judging new cases.
-- **Retrieval-critical text** — text an agent matches on to decide *whether to invoke something*: skill `description` frontmatter, agent `description` frontmatter, skill trigger examples, the first sentence of a plan, any session-primer text injected into every conversation. These drive activation; paraphrasing changes behavior upstream of the reader. Compress minimally, if at all. *Body* content is normal material.
-- **Principle and role framing** — prose that explains *who* has authority and *why* a step matters ("the main session judges each finding", "reviewers surface candidates; the outer session decides"). Usually multi-sentence paragraphs that carry a skill's *spirit*. Compressing into absolute imperatives ("no skip", "every X must Y") preserves the letter but strips *who* and *why* — the reader loses the judgment cue and the skill reads as procedure-to-follow instead of judgment-to-apply. Keep as prose.
-- **Grammatical integrity** — don't drop objects of verbs when the antecedent isn't obvious from the same clause. "The skill will detect and stop" leaves "detect" dangling; "the skill will detect this and stop" is clear.
+### 2. Collapse instruction count
 
-When in doubt, keep. Longer sentence > ambiguous short one.
+Merge overlapping directives. Replace:
+- a principle
+- two reminders
+- three examples saying the same thing
+
+with one rule plus one example only if the example carries non-obvious edge meaning.
+
+### 3. Promote durable facts; demote local detail
+
+Keep architecture, conventions, mappings, and durable gotchas. Cut local implementation trivia unless it affects the next decision.
+
+### 4. Reorder by operational value
+
+Within a doc or section, prefer this rough order when it fits:
+1. purpose / current status
+2. must-know constraints and decisions
+3. details needed to act correctly
+4. references and appendices
+
+Do not preserve a weak order just because it was original.
+
+### 5. Sharpen retrieval cues
+
+If a section is easy to miss, improve the heading or opening line. Prefer names that advertise both topic and use-case: what this section covers, and when to read it.
+
+## Meaning-preservation traps
+
+Do not cut these just because they look compressible:
+
+- negations (`not`, `never`, `don't`)
+- qualifiers (`always`, `only`, `unless`, `except when`)
+- defining parentheticals that narrow meaning
+- scope anchors (`in this file`, `for this step`, `within this repo`)
+- reasons that control edge-case judgment
+- role framing that explains who decides or why a rule exists
+
+When in doubt, keep the longer sentence.
 
 ## Do not compress
 
-- **Exact error messages, log strings, command output** — quote verbatim. Paraphrasing breaks grep and misleads debugging.
-- **Destructive or irreversible action warnings** — "this deletes all records" needs full prose. Stakes must survive.
-- **Security-sensitive steps** — authentication flows, permission checks, credential handling. Clarity > density.
-- **Ordered sequences where fragment-order is ambiguous** — if the compressed version could be misread as a different order, keep the connectives.
-- **Code, inline code, URLs, paths, identifiers** — never altered. Table *structure* (headers, column count) preserved; table cells contain prose and are fair game.
+- code, inline code, identifiers, paths, URLs, commands
+- exact error messages or log text
+- destructive-action warnings
+- security-sensitive instructions
+- ordered procedures where shortening could blur sequence
 
 ## Process
 
-1. Read target. Whole file if file; provided text if inline. If no target was provided, report it and stop — don't guess at intent.
-2. Mark protected spans: code, URLs, paths, identifiers, "do not compress" regions, retrieval-critical text. These pass through with only trivial filler drops.
-3. **Instruction-economy pass** — look for echoed directives, principle+example pairs where the examples add nothing, synonym drift, undefaulted option-lists, unnecessary explanations, descriptive voice where directive is right. This is where the biggest wins come from; skipping it leaves the real bloat intact.
-4. **Prose-economy pass** — apply drop rules section by section (not whole doc at once — easier to stay on track).
-5. Verify meaning preserved. Read distilled vs original. Every fact, decision, reference, negation, and truth-condition qualifier must survive. Rule produced ambiguity? Back off that sentence.
-6. Output:
-   - File target → overwrite in place. Git is the undo path. If the file is dirty (uncommitted changes), surface that to the caller before overwriting; don't silently stomp in-progress work.
+1. Read the document.
+2. Mark protected spans: code, identifiers, URLs, paths, exact strings, and any do-not-compress regions.
+3. Identify the doc's durable state: purpose, constraints, decisions, open questions, next steps.
+4. Rewrite around that state. Remove transcript-like history unless it still carries active meaning.
+5. Compress prose and collapse repeated directives.
+6. Reorder for findability when helpful; front-load critical information.
+7. Verify that a future reader could act correctly without the original text.
+8. Output:
+   - File target → overwrite in place. Git is the undo path. If the file is dirty, surface that before overwriting.
    - Inline target → return the distilled text in the reply.
    - If the caller explicitly asked for a new file, write alongside the original with a `.distilled.md` suffix.
 
 ## Self-check
 
-- No code, URL, or identifier altered.
-- No fact, number, or name dropped.
-- No negation or truth-condition qualifier lost or moved.
-- "Do not compress" regions reached the output intact.
-- Retrieval-critical text is near-verbatim.
-- Navigational structure matches original (top-level headings intact).
-- Echoed directives collapsed, not just shortened individually — instruction count dropped, not only word count.
-- Reads as full prose; no telegraphic shorthand.
+- The distilled doc preserves current state, not just topic coverage.
+- A future agent could continue the work without the original conversation.
+- No code, identifier, path, URL, command, or exact error text changed.
+- No negation, qualifier, constraint, or decision rationale was lost.
+- Repeated directives were merged, not merely shortened one by one.
+- Important facts were moved earlier when they were previously buried.
+- Headings and opening lines still help retrieval.
+- The result reads as clear prose, not telegraphic fragments.
 
 ## Common mistakes
 
-- Touching code or identifiers — distill is prose-only.
-- Cutting tokens without cutting *instructions* — the bigger lever is redundant directives, not filler words. A one-line rule plus three bullets echoing it should become one line.
-- Dropping a rule's "why" while keeping the imperative — the reader loses the criterion for judging edge cases and misapplies the rule.
-- Flipping truth conditions — dropping "always", "only", "never", or "except when X" silently changes what's true.
-- Dropping or moving a negation — inverts meaning. Highest-severity rewriting error.
-- Cutting defining parentheticals as filler — scope/definition parentheticals aren't optional.
-- Dropping scope anchors — "in this file", "for this step" widen the claim when removed.
-- Turning directives into descriptions — passive voice weakens skill instructions.
-- Flattening principle into procedure — collapsing role/authority framing into absolute imperatives preserves the letter, strips the spirit.
-- Paraphrasing retrieval-critical text — descriptions, trigger examples, and primer text drive activation upstream of the reader; paraphrasing changes behavior.
-- Restructuring into a different document — merging bullets and folding paragraphs is fine; rearranging top-level navigation isn't. A reader who knew where things lived should still find them.
+- Producing a summary instead of a handoff document.
+- Keeping chronological history when only the resulting state matters.
+- Shortening prose without reducing instruction count.
+- Dropping the reason that tells the reader how to apply a rule at the edges.
+- Burying the key constraint in the middle of a shorter doc.
+- Making text denser but harder to retrieve.
+- Touching code or exact strings.
